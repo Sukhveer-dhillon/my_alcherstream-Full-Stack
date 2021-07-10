@@ -1,0 +1,138 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/* header-section-start */
+header{
+    background-image: url('AlcherStream/bg.png');
+    height: 81vh;
+    
+}
+/* header-section-1-start */
+#header-section-1{
+    padding: 20px 0px;
+    display: grid;
+    grid-template-columns: 28% auto 10%;
+}
+#header-section-2{
+    height: 85%;
+    
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+#section1-div1{
+    display: flex;
+    justify-content: center;
+}
+#section2-div1{
+    
+    width: 30vw;
+}
+/* header-section-1-end */
+/* header-section-end */
+/* footer-section-start */
+/* footer-section-1-start */
+footer{
+    background-color: rgb(34, 33, 33);
+    height: 19vh; 
+}
+#footer-section-1{
+   
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.footer-icons{
+    margin: 0px 33px;
+}
+.bi-facebook{
+    filter: invert(100%);
+
+}
+.bi-twitter{
+    /* inverted color of twitter icon */
+    filter: invert(100%);
+}
+.bi-youtube{
+    filter: invert(100%);
+
+}
+/* footer-section-1-end */
+/* footer-section-2-start */
+#footer-section-2{
+    height: 60%;
+    
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#copyright{
+    
+    font-size: 27px;
+    margin-right: 5px;
+}
+#footer-section2-text{
+   
+    font-size: 24px;
+     color: white;
+     font-family: 'odibee Sans';
+}
+/* footer-section-2-end
+footer-section-end */
+
+/* making website responsive section start */
+@media screen and (max-width:768px){
+    #header-section-1{
+        grid-template-columns: 40% auto 10%;
+    }
+
+}
+@media screen and (max-width:425px){
+    #header-section2-div{
+        font-size: 45px;
+    }
+    #header-section-1{
+        grid-template-columns: 40% auto 10%;
+    }
+    /* header image logo */
+    .h-img{
+        padding-left: 10px;
+        width: 100%;
+        height: 100%;
+    }
+    #header-search{
+        margin-left: 30px;
+        
+    }
+    #movie-section{
+        display: flex;
+        flex-direction: column;
+    }
+    .movie-div{
+        margin: 20px 0px;
+    }
+
+}
+@media  screen and (max-width:375px) {
+    #main-section-1 {
+        padding: 10px 50px;
+    }
+    
+}
+@media  screen and (max-width:320px){
+    #header-section3-div{
+        padding: 16px 58px;
+    }
+    #main-section-1 {
+        padding: 10px 20px;
+    }
+    
+}
+/* making website responsive section end */
+
+

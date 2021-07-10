@@ -1,0 +1,119 @@
+<!-- template inheritance(most code is repeated) -->
+<!-- to load static file from our app -->
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <!-- webpage icon -->
+    <link rel="icon" href="{% static 'users/AlcherStream/pics/icon.png' %}" type="icon/png">
+    <!-- stylesheet linking -->
+    <link rel="stylesheet" href="{% static 'users/users.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- font family poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- odibee sans font family -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <!-- bootstarap link for social media icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    {% block head%}{% endblock %}
+
+    {% if title %}
+    <title>Django Blog - {{title}}</title>
+    {% else%}
+    <title>ALCHERstream - 480p Movies, 720p Movies, 1080p Movies</title>
+    {% endif %}
+</head>
+
+<body>
+    <header class="site-header">
+        <!-- section-1 -->
+        <section id="header-section-1">
+            <!-- icon-div -->
+            <div id="section1-div1">
+                <a href="{% url 'movie-home' %}"><img src="{% static 'users/AlcherStream/logo.svg' %}" alt="logo" class="h-img"></a>
+
+            </div>
+        </section>
+
+        <!-- create block here which child templates can override -->
+        <section id="header-section-2">
+            <div id="section2-div1">
+                {% if messages %}
+                {% for message in messages %}
+                <!-- django and bootstarp -->
+                <div class="alert alert-{{message.tags}}">
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+        </section>
+
+    </header>
+    <!-- footer section contains 2 sections  -->
+    <footer>
+        <!-- section-1 -->
+        <section id="footer-section-1">
+
+            <div class="footer-icons">
+                <!-- facebook icon -->
+                <i class="bi bi-facebook"></i>
+            </div>
+
+            <div class="footer-icons">
+                <!-- twitter icon -->
+                <i class="bi bi-twitter"></i>
+            </div>
+            <div class="footer-icons">
+                <!-- youtube icon -->
+                <i class="bi bi-youtube"></i>
+            </div>
+
+
+        </section>
+        <!-- section-2 -->
+        <section id="footer-section-2">
+            <!-- copyright symbol -->
+            <div id="copyright">
+                &#169
+            </div>
+            <div id="footer-section2-text">
+            2021 AlcherStream
+            </div>
+
+        </section>
+
+    </footer>
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

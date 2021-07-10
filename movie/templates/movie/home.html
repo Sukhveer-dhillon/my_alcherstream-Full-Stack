@@ -1,0 +1,64 @@
+{% extends "movie/index.html" %}
+{% block movies-title %}
+BLOCKBUSTER HITS
+{% endblock movies-title %}
+{% block movies %}
+
+{% for movie in movies %}
+<div class="movie-div">
+    <!-- movie 1 -->
+    <img class="movie-pic" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="img">
+    <div class="movie-info">
+        <h3>{{ movie.title }}</h3>
+        <span class="green">{{ movie.vote_average }}</span>
+        <!-- favourite button -->
+
+    </div>
+
+    <div class="overview">
+        <div id="overview-heart">
+            <div>
+                <h2>Overview</h2>
+            </div>
+            {%if user.is_authenticated%}
+            <!-- <indent>
+          (fav=bool
+            fav=False
+            if movie.favourites.filter(id=request.user.id).exists():
+                fav=True)
+        
+       </indent> -->
+
+
+            {% if movie in fav_movies %}
+            <div>
+                <a href="{% url 'favourite_add' movie.id %}" class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></a>
+               
+            </div>
+            {% else %}
+            <div>
+                <a href="{% url 'favourite_add' movie.id%}" class="btn btn-outline-primary"><i
+                        class="bi bi-heart"></i></a>
+
+            </div>
+            {% endif %}
+
+            {% else %}
+            <div>
+                <a href="{% url 'login' %}" class="btn btn-outline-primary"><i class="bi bi-heart"></i></a>
+            </div>
+
+            {% endif %}
+        </div>
+        {{ movie.overview }}
+
+
+    </div>
+
+
+
+</div>
+
+{% endfor %}
+
+{% endblock movies %}

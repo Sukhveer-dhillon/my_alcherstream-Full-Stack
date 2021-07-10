@@ -1,0 +1,153 @@
+<!-- to load static files -->
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- webpage title -->
+    <title>ALCHERstream - 480p Movies, 720p Movies, 1080p Movies</title>
+    <meta name="description"
+        content="ALCHERstrem, alcherstream, ALCHERstream pro, alcherstream pro, ALCHERstream.com, ALCHERstream.in">
+    <meta name="robots" content="noindex,nofollow">
+    <!-- webpage icon -->
+    <link rel="icon" href="{% static 'movie/AlcherStream/pics/icon.png' %}" type="icon/png">
+    <!-- stylesheet linking -->
+    <link rel="stylesheet" href="{% static 'movie/index.css' %}" type="text/css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- font family poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- odibee sans font family -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <!-- bootstarap link for social media icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!-- divided header into three sections - icon , text, get started button section -->
+    <header>
+        <!-- section-1 -->
+        <section id="header-section-1">
+            <!-- icon-div -->
+            <div id="section1-div1">
+                <a href="{% url 'movie-home' %}"><img src="{% static 'movie/AlcherStream/logo.svg' %}" alt="logo" class="h-img"></a>
+
+            </div>
+            <!-- search-button-div -->
+            <form id="search-div">
+                {% if user.is_authenticated %}
+                <input type="search" name="search" id="header-search"  placeholder="Search movie here">
+                {% else %}
+                <a href="{% url 'login' %}"><input type="search" name="search" id="header-search"  placeholder="Search movie here"></a>
+                {% endif %}
+            </form>
+
+            <!-- profile-icon-div -->
+            <div id="section1-div3">
+
+                {%if user.is_authenticated%}
+                <a class="nav-item nav-link" href="{% url 'favourite_list' %}">Favourites</a>
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                <img class="rounded-circle article-img" src="{{user.profile.image.url}}" alt="">
+                {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                {% endif %}
+
+
+                <!-- <img src="{% static 'movie/AlcherStream/profile.svg' %}" alt="profile-icon"> -->
+            </div>
+
+        </section>
+        <!-- section-2 -->
+        <section id="header-section-2">
+            <div id="header-section2-div">
+                <p>STREAM ALL THE POPULAR <br> MOVIES ON THE GO</p>
+            </div>
+
+        </section>
+        <!-- section-3 -->
+        <section id="header-section-3">
+            <a href="" id="getstarted">
+                <div id="header-section3-div">
+                    <div id="header-text">GET STARTED</div>
+                </div>
+            </a>
+
+        </section>
+
+    </header>
+    <!-- main section is divided into 2 sections -both same -->
+    <main>
+        <!-- section-1 -->
+        <section id="main-section-1">
+            <!-- heading -->
+            <div id="heading-section">
+                <h2>{% block movies-title %}{% endblock movies-title %}</h2>
+
+            </div>
+
+            <div id="movie-section">
+                <!-- movie section contain movie pic and info(have 4 div) -->
+               {% block movies %}{% endblock movies %}
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <!-- footer section contains 2 sections  -->
+    <footer>
+        <!-- section-1 -->
+        <section id="footer-section-1">
+
+            <div class="footer-icons">
+                <!-- facebook icon -->
+                <i class="bi bi-facebook"></i>
+            </div>
+
+            <div class="footer-icons">
+                <!-- twitter icon -->
+                <i class="bi bi-twitter"></i>
+            </div>
+            <div class="footer-icons">
+                <!-- youtube icon -->
+                <i class="bi bi-youtube"></i>
+            </div>
+
+
+        </section>
+        <!-- section-2 -->
+        <section id="footer-section-2">
+            <!-- copyright symbol -->
+            <div id="copyright">
+                &#169
+            </div>
+            <p id="footer-section2-text"> 2021 AlcherStream</p>
+
+        </section>
+
+    </footer>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <script src="{% static 'movie/index.js' %}"></script>
+
+
+</body>
+
+</html>
