@@ -32,6 +32,7 @@ DEBUG = True
 DEBUG_VALUE="True"
 
 SECRET_KEY=os.environ.get('SECRET_KEY')
+DEBUG_VALUE=(os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['myalcherstream.herokuapp.com']
 
